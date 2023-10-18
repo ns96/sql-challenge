@@ -1,0 +1,37 @@
+# ERD text for https://app.quickdatabasediagrams.com/
+# 
+
+departments as d
+-
+dept_no PK CHAR(4)
+dept_name VARCHAR(30)
+
+employees as e
+-
+emp_no INT PK
+emp_title_id CHAR(5) FK >- t.title_id
+birth_date DATE
+first_name VARCHAR(30)
+last_name VARCHAR(30)
+sex CHAR(1)
+hire_date DATE
+
+dept_emp
+-
+dept_no CHAR(4) PK FK >- d.dept_no
+emp_no INT PK FK - e.emp_no 
+
+dept_manager
+-
+dept_no CHAR(4) PK FK >- d.dept_no
+emp_no INT PK FK -< e.emp_no
+
+titles as t
+-
+title_id CHAR(5) PK
+title VARCHAR(30)
+
+salary
+-
+emp_no INT PK FK - e.emp_no
+salary INT
